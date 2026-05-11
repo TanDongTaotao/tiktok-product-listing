@@ -1,6 +1,6 @@
 # TikTok Product Listing Skill
 
-Parse inventory spreadsheets, normalize with LLM, generate listing templates, upload images, and create TikTok Shop draft products.
+Parse inventory spreadsheets, normalize with LLM, generate listing templates, upload images, and create TikTok Shop published products.
 
 ---
 
@@ -21,7 +21,7 @@ python scripts/tiktok_product_image_uploader.py --shop-cipher <cipher> <image_pa
 # 5. Dry-run
 python scripts/tiktok_product_create.py <template.xlsx> --shop-cipher <cipher> --warehouse-id <id>
 
-# 6. Create draft products
+# 6. Create published products
 python scripts/tiktok_product_create.py <template.xlsx> --shop-cipher <cipher> --warehouse-id <id> --create --confirm 上架
 ```
 
@@ -108,7 +108,6 @@ The CLI reads category-specific columns (材质, 季节, 风格, etc.) from the 
 | `config/category_cache.json` | Category hint → TikTok leaf category ID |
 | `config/llm_content_template.md` | **Mandatory** template for LLM title/description generation |
 | `references/category-profiles.md` | Full attribute reference per category |
-| `references/category-profiles.md` | Full reference: attributes per category |
 
 ## Verification
 

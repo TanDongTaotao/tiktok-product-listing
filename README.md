@@ -4,7 +4,7 @@
 
 # TikTok Product Listing Skill
 
-TikTok Shop 商品上架 Skill。它把仓库清单、图片和商品说明转成可审核的 `商品上架.xlsx`，再通过 TikTok Shop Open API 完成图片上传、payload dry-run 校验和草稿商品创建。
+TikTok Shop 商品上架 Skill。它把仓库清单、图片和商品说明转成可审核的 `商品上架.xlsx`，再通过 TikTok Shop Open API 完成图片上传、payload dry-run 校验和商品发布。
 
 本 Skill 面向通用 Agent 设计，不绑定 Codex、Claude 或 OpenClaw。Agent 只需要读取 `SKILL.md`、`skill.yaml` 和本目录资源，即可按同一套流程执行商品上架任务。
 
@@ -17,7 +17,7 @@ TikTok Shop 商品上架 Skill。它把仓库清单、图片和商品说明转�
 - 生成多品类 `商品上架.xlsx`，包含 TikTok 类目属性列。
 - 上传商品主图、变体图和尺码表图到 TikTok Shop。
 - 读取审核后的模板，生成 Create Product payload。
-- 默认 dry-run，只有显式确认后才创建 TikTok 草稿商品。
+- 默认 dry-run，只有显式确认后才创建 TikTok 已发布商品。
 
 **不负责：**
 
@@ -40,7 +40,7 @@ TikTok Shop 商品上架 Skill。它把仓库清单、图片和商品说明转�
   -> tiktok_product_image_uploader.py
   -> image_uri_map.json
   -> tiktok_product_create.py
-  -> dry-run JSON / TikTok draft products
+  -> dry-run JSON / TikTok published products
 ```
 
 ## 快速开始
@@ -133,7 +133,7 @@ python scripts/tiktok_product_create.py data/tiktok_product_listing/{timestamp}_
 
 默认只 dry-run，不会调用 Create Product。
 
-### 9. 创建草稿商品
+### 9. 创建已发布商品
 
 确认用户已审核 `商品上架.xlsx` 和 dry-run 输出后，才执行：
 
@@ -159,7 +159,7 @@ SOP 覆盖：
 - 模板生成和人工审核。
 - 图片上传和 URI 映射。
 - dry-run 校验。
-- 草稿商品创建。
+- 商品发布。
 - 失败恢复和交付清单。
 
 ## 文件结构
@@ -203,7 +203,7 @@ skills/tiktok-product-listing/
 | `scripts/tiktok_product_excel_parser.py` | 解析原始仓库 Excel，按父 SKU 分组 |
 | `scripts/tiktok_product_to_template.py` | enhanced JSON -> 多 sheet `商品上架.xlsx` |
 | `scripts/tiktok_product_image_uploader.py` | 上传本地图片或 URL 图片，输出 TikTok URI 映射 |
-| `scripts/tiktok_product_create.py` | 读取审核后的模板，组装 payload，dry-run 或创建草稿商品 |
+| `scripts/tiktok_product_create.py` | 读取审核后的模板，组装 payload，dry-run 或创建已发布商品 |
 | `scripts/tiktok_product_listing_precheck.py` | 店铺授权、前置条件和类目能力预检 |
 | `scripts/tiktok_shop_open_api.py` | TikTok Open API 签名、IPv4 和请求封装 |
 | `scripts/tiktok_category_attributes.py` | 模板属性列到 TikTok 属性 ID / 值 ID 的映射 |
@@ -232,7 +232,7 @@ data/tiktok_product_listing/create_run.json
 
 - 审核用 `商品上架.xlsx`。
 - dry-run payload 和校验报告。
-- TikTok Shop draft product IDs 或 API 错误详情。
+- TikTok Shop published product IDs 或 API 错误详情。
 
 ## Agent 接入方式
 
@@ -295,7 +295,7 @@ python -m unittest tests.test_tiktok_product_listing_precheck -v
 
 ## 版本记录
 
-- `1.0.0`：通用 Skill 包装版本。包含机器可读 manifest、Agent 无关入口、TikTok 商品上架主链路、属性自动映射、dry-run 安全门和草稿商品创建能力。
+- `1.0.0`：通用 Skill 包装版本。包含机器可读 manifest、Agent 无关入口、TikTok 商品上架主链路、属性自动映射、dry-run 安全门和商品发布能力。
 
 ## 许可证
 

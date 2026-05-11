@@ -4,13 +4,13 @@
 
 # TikTok Product Listing SOP
 
-本 SOP 用于指导 Agent 或运营人员从原始仓库清单走到 TikTok Shop 草稿商品创建。执行时优先使用 dry-run，只有在用户明确确认后才创建商品。
+本 SOP 用于指导 Agent 或运营人员从原始仓库清单走到 TikTok Shop 已发布商品创建。执行时优先使用 dry-run，只有在用户明确确认后才创建商品。
 
 ## 0. 执行原则
 
 - 先理解输入，再运行脚本。
 - 先生成可审核文件，再调用 TikTok API 创建商品。
-- 先 dry-run，再创建草稿商品。
+- 先 dry-run，再创建已发布商品。
 - 遇到不确定的类目、合规、材质、功能或图片归属时，停止并让用户确认。
 - 不把 token、secret、shop_cipher、warehouse_id 写入 Skill 文档。
 
@@ -247,13 +247,13 @@ python scripts/tiktok_product_create.py data/tiktok_product_listing/{timestamp}_
 - 合规字段和默认值。
 - blocked 商品和错误原因。
 
-只有当用户明确确认创建草稿商品时，才进入下一步。推荐确认词为：
+只有当用户明确确认创建已发布商品时，才进入下一步。推荐确认词为：
 
 ```text
 上架
 ```
 
-## 10. 创建 TikTok 草稿商品
+## 10. 创建 TikTok 已发布商品
 
 运行：
 
@@ -281,7 +281,7 @@ python scripts/tiktok_product_create.py data/tiktok_product_listing/{timestamp}_
 - `商品上架.xlsx` 文件位置。
 - `image_uri_map.json` 文件位置。
 - `create_run.json` 文件位置。
-- 成功创建的 draft product IDs。
+- 成功创建的 published product IDs。
 - 失败商品列表和下一步建议。
 
 ## 12. 失败恢复

@@ -4,13 +4,13 @@
 
 # TikTok Product Listing SOP
 
-This SOP guides an agent or operator from raw warehouse inventory to TikTok Shop draft product creation. Always dry-run first. Create products only after explicit user confirmation.
+This SOP guides an agent or operator from raw warehouse inventory to TikTok Shop published product creation. Always dry-run first. Create products only after explicit user confirmation.
 
 ## 0. Operating Principles
 
 - Understand the input before running scripts.
 - Generate reviewable files before calling TikTok product creation APIs.
-- Dry-run before creating draft products.
+- Dry-run before creating published products.
 - Stop and ask the user when category, compliance, material, function, or image ownership is uncertain.
 - Do not store tokens, secrets, shop cipher values, or warehouse IDs in Skill documents.
 
@@ -281,7 +281,7 @@ Report back to the user:
 - `商品上架.xlsx` path.
 - `image_uri_map.json` path.
 - `create_run.json` path.
-- Successfully created draft product IDs.
+- Successfully created published product IDs.
 - Failed products and recommended next actions.
 
 ## 12. Failure Recovery

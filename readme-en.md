@@ -4,7 +4,7 @@
 
 # TikTok Product Listing Skill
 
-TikTok Shop product listing Skill. It turns warehouse inventory, images, and product notes into a reviewable `商品上架.xlsx`, then uses the TikTok Shop Open API to upload images, dry-run Create Product payloads, and create draft products.
+TikTok Shop product listing Skill. It turns warehouse inventory, images, and product notes into a reviewable `商品上架.xlsx`, then uses the TikTok Shop Open API to upload images, dry-run Create Product payloads, and create published products.
 
 This Skill is designed for general-purpose agents. It is not tied to Codex, Claude, or OpenClaw. An agent can read `SKILL.md`, `skill.yaml`, and the bundled resources in this directory to execute the same product-listing workflow.
 
@@ -18,7 +18,7 @@ This Skill is designed for general-purpose agents. It is not tied to Codex, Clau
 - Producing a multi-category `商品上架.xlsx` with TikTok category attribute columns.
 - Uploading product images, variant images, and size-chart images to TikTok Shop.
 - Reading reviewed templates and generating Create Product payloads.
-- Defaulting to dry-run and creating draft products only after explicit confirmation.
+- Defaulting to dry-run and creating published products only after explicit confirmation.
 
 **Not responsible for:**
 
@@ -41,7 +41,7 @@ raw_inventory.xlsx
   -> tiktok_product_image_uploader.py
   -> image_uri_map.json
   -> tiktok_product_create.py
-  -> dry-run JSON / TikTok draft products
+  -> dry-run JSON / TikTok published products
 ```
 
 ## Quick Start
@@ -134,7 +134,7 @@ python scripts/tiktok_product_create.py data/tiktok_product_listing/{timestamp}_
 
 Dry-run is the default. It does not call Create Product.
 
-### 9. Create draft products
+### 9. Create published products
 
 Run this only after the user has reviewed the listing workbook and dry-run output:
 
@@ -204,7 +204,7 @@ skills/tiktok-product-listing/
 | `scripts/tiktok_product_excel_parser.py` | Parse raw inventory Excel and group rows by parent SKU |
 | `scripts/tiktok_product_to_template.py` | Convert enhanced JSON to multi-sheet `商品上架.xlsx` |
 | `scripts/tiktok_product_image_uploader.py` | Upload local or URL images and return TikTok URI mappings |
-| `scripts/tiktok_product_create.py` | Read reviewed templates, assemble payloads, dry-run, or create draft products |
+| `scripts/tiktok_product_create.py` | Read reviewed templates, assemble payloads, dry-run, or create published products |
 | `scripts/tiktok_product_listing_precheck.py` | Verify shop authorization, prerequisites, and category capability |
 | `scripts/tiktok_shop_open_api.py` | TikTok Open API signing, IPv4 behavior, and request helpers |
 | `scripts/tiktok_category_attributes.py` | Map template attribute columns to TikTok attribute IDs and value IDs |
@@ -233,7 +233,7 @@ data/tiktok_product_listing/create_run.json
 
 - Reviewable `商品上架.xlsx`.
 - Dry-run payloads and validation report.
-- TikTok Shop draft product IDs or API error details.
+- TikTok Shop published product IDs or API error details.
 
 ## Agent Integration
 
@@ -296,7 +296,7 @@ python -m unittest tests.test_tiktok_product_listing_precheck -v
 
 ## Version History
 
-- `1.0.0`: General Skill packaging release. Includes machine-readable manifest, agent-neutral entrypoint, TikTok listing pipeline, automatic attribute mapping, dry-run safety gate, and draft product creation.
+- `1.0.0`: General Skill packaging release. Includes machine-readable manifest, agent-neutral entrypoint, TikTok listing pipeline, automatic attribute mapping, dry-run safety gate, and published product creation.
 
 ## License
 

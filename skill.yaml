@@ -3,7 +3,7 @@ version: "1.0.0"
 description: >
   TikTok Shop product listing automation. Parse inventory xlsx, extract sizes/colors,
   generate English titles and descriptions via LLM following a content template,
-  produce reviewed listing templates, upload images, and create draft products
+  produce reviewed listing templates, upload images, and create published products
   through the TikTok Shop Open API.
 
 author: Agent Skill Framework
@@ -21,7 +21,7 @@ capabilities:
   - Produce multi-category listing template as reviewed xlsx
   - Upload product and variant images to TikTok
   - Recommend categories via TikTok API with local caching
-  - Assemble and create TikTok Shop draft products
+  - Assemble and create TikTok Shop published products
   - Dry-run payload validation before actual creation
 
 dependencies:
