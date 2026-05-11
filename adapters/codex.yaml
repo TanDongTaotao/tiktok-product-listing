@@ -1,0 +1,24 @@
+# OpenAI Codex adapter for tiktok-product-listing skill
+# Maps skill capabilities to Codex tool calling conventions.
+
+mounts:
+  scripts: scripts/
+  config: config/
+  references: references/
+
+entry_point: SKILL.md
+
+tool_mapping:
+  python: execute_python
+  bash: execute_bash
+  read_file: read
+
+workflow:
+  parse: "python scripts/tiktok_product_excel_parser.py <input>"
+  translate: "LLM call with config/llm_content_template.md"
+  template: "python scripts/tiktok_product_to_template.py <enhanced.json>"
+  upload: "python scripts/tiktok_product_image_uploader.py <files>"
+  create: "python scripts/tiktok_product_create.py <xlsx> --create --confirm 上架"
+
+validation:
+  - "python scripts/tiktok_product_create.py <xlsx> --check"

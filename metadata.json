@@ -1,0 +1,30 @@
+{
+  "name": "tiktok-product-listing",
+  "version": "1.0.0",
+  "description": "TikTok Shop product listing. Parse inventory xlsx, normalize with LLM, generate template, upload images, create draft products via Open API.",
+  "author": "Agent Skill Framework",
+  "tags": ["tiktok", "shop", "product-listing", "open-api", "ecommerce"],
+  "languages": ["python"],
+  "entry": "SKILL.md",
+  "manifest": "skill.yaml",
+  "scripts": {
+    "create_product": "scripts/tiktok_product_create.py",
+    "upload_images": "scripts/tiktok_product_image_uploader.py",
+    "generate_template": "scripts/tiktok_product_to_template.py",
+    "parse_inventory": "scripts/tiktok_product_excel_parser.py",
+    "open_api_client": "scripts/tiktok_shop_open_api.py",
+    "precheck": "scripts/tiktok_product_listing_precheck.py",
+    "map_attributes": "scripts/tiktok_category_attributes.py",
+    "oauth_server": "scripts/tiktok_oauth_callback_server.py"
+  },
+  "config": {
+    "env_template": "config/.env.example",
+    "category_cache": "config/category_cache.json",
+    "llm_content_template": "config/llm_content_template.md",
+    "category_profiles": "references/category-profiles.md"
+  },
+  "env_vars": {
+    "required": ["TIKTOK_SHOP_APP_KEY", "TIKTOK_SHOP_APP_SECRET"],
+    "after_authorization": ["TIKTOK_SHOP_ACCESS_TOKEN", "TIKTOK_SHOP_REFRESH_TOKEN"]
+  }
+}

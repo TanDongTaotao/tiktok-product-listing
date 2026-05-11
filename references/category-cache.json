@@ -1,0 +1,62 @@
+{
+  "连衣裙": {
+    "category_id": "601281",
+    "category_name": "Casual Dresses",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "连衣裙裙装": {
+    "category_id": "601281",
+    "category_name": "Casual Dresses",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "Dresses": {
+    "category_id": "601281",
+    "category_name": "Casual Dresses",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "T恤": {
+    "category_id": "906000",
+    "category_name": "Evening Dresses",
+    "category_version": "v2",
+    "source": "recommend"
+  },
+  "文胸": {
+    "category_id": "845704",
+    "category_name": "Underwear Sets",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "袜子": {
+    "category_id": "601346",
+    "category_name": "Socks",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "内衣": {
+    "category_id": "845704",
+    "category_name": "Underwear Sets",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "裤袜": {
+    "category_id": "601346",
+    "category_name": "Socks",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "睡衣": {
+    "category_id": "1197840",
+    "category_name": "Pajama Sets",
+    "category_version": "v2",
+    "source": "seed"
+  },
+  "情趣": {
+    "category_id": "1197840",
+    "category_name": "Pajama Sets",
+    "category_version": "v2",
+    "source": "seed"
+  }
+}

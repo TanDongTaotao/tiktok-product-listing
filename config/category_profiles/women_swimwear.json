@@ -1,0 +1,16 @@
+{
+  "category_name": "Women's Swimwear",
+  "category_search_keywords": ["women swimsuit", "one-piece swimsuit", "beachwear"],
+  "sales_attributes": ["Size", "Color"],
+  "size_mapping": {
+    "S": "S",
+    "M": "M",
+    "L": "L",
+    "XL": "XL",
+    "2XL": "2XL",
+    "3XL": "3XL"
+  },
+  "image_count": "at least 3",
+  "required_fields": ["title", "description", "images", "price", "stock", "size", "color"],
+  "recommendation": "Recommend category using english product name with keyword 'swimwear'"
+}

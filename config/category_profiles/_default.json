@@ -1,0 +1,42 @@
+{
+  "brand": "No Brand",
+  "condition": "NEW",
+  "currency": "USD",
+  "category_version": "v2",
+  "listing_platform": "TIKTOK_SHOP",
+  "exchange_rate_cny_to_usd": 0.14,
+
+  "product_attributes": {
+    "101400": {"name": "CA Prop 65: Carcinogens", "value": "No", "value_id": "1000059"},
+    "101395": {"name": "CA Prop 65: Repro. Chems", "value": "No", "value_id": "1000059"}
+  },
+
+  "field_tips": {
+    "price": "Must be object: {\"sale_price\": \"3.73\", \"currency\": \"USD\"}",
+    "inventory": "Array: [{\"quantity\": 1, \"warehouse_id\": \"...\"}]",
+    "main_images": "Product-level images: [{\"uri\": \"...\"}]. Minimum 1 required. Upload via image uploader first.",
+    "image_upload": "Use multipart/form-data with field name 'data'. Sign with empty body.",
+    "brand": "Pass brand_id as empty string \"\" for No Brand. Do NOT create custom brand.",
+    "sales_attributes": "Format: [{\"name\": \"Size\", \"value_name\": \"M\"}]. Add sku_img for visual dimension.",
+    "size_chart": "Field: {\"image\": {\"uri\": \"...\"}}. NOT 'size_chart_image'. Omit if not provided.",
+    "compliance": "Use product_attributes array (NOT top-level 'compliance'): [{\"id\": \"101400\", \"values\": [{\"id\": \"1000059\", \"name\": \"No\"}]}]",
+    "description": "HTML format, English only, minimum 80 characters.",
+    "color_size": "All color and size values in sales_attributes must be English."
+  },
+
+  "required_fields": [
+    "title",
+    "description",
+    "category_id",
+    "category_version",
+    "shop_cipher",
+    "main_images",
+    "skus"
+  ],
+  "sku_required_fields": [
+    "seller_sku",
+    "price",
+    "inventory",
+    "sales_attributes"
+  ]
+}

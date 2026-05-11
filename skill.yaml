@@ -1,0 +1,63 @@
+name: tiktok-product-listing
+version: "1.0.0"
+description: >
+  TikTok Shop product listing automation. Parse inventory xlsx, extract sizes/colors,
+  generate English titles and descriptions via LLM following a content template,
+  produce reviewed listing templates, upload images, and create draft products
+  through the TikTok Shop Open API.
+
+author: Agent Skill Framework
+license: MIT
+
+tags: [tiktok, shop, product-listing, ecommerce, open-api, chinese-nlp]
+languages: [python]
+
+entry: SKILL.md
+
+capabilities:
+  - Parse Chinese inventory xlsx into structured product groups
+  - Extract size/color/pcs from Chinese product names (LLM-driven)
+  - Generate SEO pipe-separated English titles and HTML descriptions
+  - Produce multi-category listing template as reviewed xlsx
+  - Upload product and variant images to TikTok
+  - Recommend categories via TikTok API with local caching
+  - Assemble and create TikTok Shop draft products
+  - Dry-run payload validation before actual creation
+
+dependencies:
+  python: ["openpyxl", "requests"]
+  env:
+    required:
+      - TIKTOK_SHOP_APP_KEY
+      - TIKTOK_SHOP_APP_SECRET
+    after_auth:
+      - TIKTOK_SHOP_ACCESS_TOKEN
+      - TIKTOK_SHOP_REFRESH_TOKEN
+
+config:
+  category_cache: config/category_cache.json
+  llm_content_template: config/llm_content_template.md
+  category_profiles: config/tiktok_standard_category_profiles.md
+  attribute_cache: data/tiktok_product_listing/all_category_attributes_full.json
+
+scripts:
+  create_product: scripts/tiktok_product_create.py
+  upload_images: scripts/tiktok_product_image_uploader.py
+  generate_template: scripts/tiktok_product_to_template.py
+  parse_inventory: scripts/tiktok_product_excel_parser.py
+  open_api_client: scripts/tiktok_shop_open_api.py
+  precheck: scripts/tiktok_product_listing_precheck.py
+  map_attributes: scripts/tiktok_category_attributes.py
+  oauth_server: scripts/tiktok_oauth_callback_server.py
+
+output:
+  - "data/tiktok_product_listing/{timestamp}_商品上架.xlsx"
+  - "data/tiktok_product_listing/create_run.json"
+  - "data/tiktok_product_listing/image_uploads.json"
+
+smoke_test: scripts/tiktok_product_create.py --help
+
+adapters:
+  claude_cli: adapters/claude-commands/
+  openai_codex: adapters/codex.yaml
+  openclaw: adapters/openclaw.yaml
